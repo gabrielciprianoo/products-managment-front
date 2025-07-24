@@ -1,6 +1,9 @@
-import { Link, Form } from "react-router-dom";
+import { Link, Form, useActionData } from "react-router-dom";
+import { ErrorMessage } from "../components";
 
 export default function NewProduct() {
+
+  const error = useActionData() as string;
   return (
     <>
       <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
@@ -15,6 +18,8 @@ export default function NewProduct() {
           Back to Products
         </Link>
       </div>
+
+      {error && (<ErrorMessage>{error}</ErrorMessage>)}
 
       <Form className="mt-10" method="POST">
         <div className="mb-4">
