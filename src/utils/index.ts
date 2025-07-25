@@ -3,7 +3,7 @@ import type { ProductType } from "../types";
 export const validateProductForm = (data: ProductType) => {
   let error = "";
   if (!data.name?.trim() || isNaN(data.price)) {
-    error = "Todos los campos son obligatorios y deben tener valores válidos";
+    error = "All fields are required and must have valid values.";
   }
   return error;
 };
