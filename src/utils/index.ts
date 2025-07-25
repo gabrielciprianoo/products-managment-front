@@ -7,3 +7,9 @@ export const validateProductForm = (data: ProductType) => {
   }
   return error;
 };
+
+
+export function parseFormData<T extends Record<string, unknown>>(formData: FormData): Partial<T> {
+  const entries = Object.fromEntries(formData.entries());
+  return entries as Partial<T>;
+}
