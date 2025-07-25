@@ -10,10 +10,10 @@ export const addProduct = async (data : DrafProductType) => {
         if(!result.success){
             throw new Error("Data validation failed");
         }
-        
+
         const url = import.meta.env.VITE_API_URL
         const response = await axios.post(url, result.output)
-        return response
+        return response.data
 
     } catch (error) {
         console.log(error)
