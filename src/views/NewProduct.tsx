@@ -49,7 +49,7 @@ export default function NewProduct() {
         <input
           type="submit"
           className="p-2 bg-blue-700 text-sm uppercase cursor-pointer text-white font-bold rounded-md hover:bg-blue-800 transition-colors"
-          value="Registrar Producto"
+          value="Register New Product"
         />
       </Form>
     </>
