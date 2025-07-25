@@ -24,25 +24,25 @@ export default function NewProduct() {
       <Form className="mt-10" method="POST">
         <div className="mb-4">
           <label className="text-gray-800" htmlFor="name">
-            Nombre Producto:
+            Product Name:
           </label>
           <input
             id="name"
             type="text"
             className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Nombre del Producto"
+            placeholder="Example: Mouse Logitech Master Series MX"
             name="name"
           />
         </div>
         <div className="mb-4">
           <label className="text-gray-800" htmlFor="price">
-            Precio:
+            Price:
           </label>
           <input
             id="price"
             type="number"
             className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Precio Producto. ej. 200, 300"
+            placeholder="Example: 200, 300"
             name="price"
           />
         </div>
