@@ -1,6 +1,7 @@
 import { safeParse } from "valibot"
 import type { DrafProductType } from "../types"
 import { DraftProductSchema } from "../schemas"
+import axios from "axios";
 
 export const addProduct = async (data : DrafProductType) => { 
     try {
@@ -10,7 +11,12 @@ export const addProduct = async (data : DrafProductType) => {
             throw new Error("Data validation failed");
         }
 
-        console.log('calling to REST API...')
+        console.log(result.output)
+
+        const url = import.meta.env.VITE_API_URL
+ 
+        const response = await axios.post(url, result.output)
+        console.log(response);
 
     } catch (error) {
         console.log(error)
