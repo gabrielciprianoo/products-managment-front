@@ -1,5 +1,5 @@
 import type { ActionFunctionArgs } from "react-router-dom";
-import { validateProductForm } from "../utils";
+import { parseFormData, validateProductForm } from "../utils";
 import type { ProductType } from "../types";
 import { addProduct } from "../services";
 
@@ -15,10 +15,12 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 const addProductAction = async (request: Request) => {
-  const formData = Object.fromEntries(await request.formData());
+  const formData = await request.formData();
+  const rawData = parseFormData<ProductType>(formData);
+
   const data: ProductType = {
-    name: formData.name as string,
-    price: parseFloat(formData.price as string),
+    name: rawData.name ?? '',
+    price: parseFloat(String(rawData.price ?? '0')),
   };
   const error = validateProductForm(data);
 
