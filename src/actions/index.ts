@@ -25,7 +25,7 @@ const addProductAction = async (request: Request) => {
   const error = validateProductForm(data);
 
   if (!error) {
-    await addProduct();
+    await addProduct(data);
   }
   return error;
 };
