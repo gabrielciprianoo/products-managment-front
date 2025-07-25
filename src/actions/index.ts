@@ -1,7 +1,8 @@
-import type { ActionFunctionArgs } from "react-router-dom";
+import { redirect, type ActionFunctionArgs } from "react-router-dom";
 import { parseFormData, validateProductForm } from "../utils";
 import type { ProductType } from "../types";
 import { addProduct } from "../services";
+import { notify } from "../utils/notify";
 
 export async function action({ request }: ActionFunctionArgs) {
   switch (request.method) {
@@ -25,7 +26,9 @@ const addProductAction = async (request: Request) => {
   const error = validateProductForm(data);
 
   if (!error) {
-    await addProduct(data);
+      await addProduct(data);
+      notify("success", "Product Added Successfully");
+      return redirect('/')
   }
   return error;
 };
