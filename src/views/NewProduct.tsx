@@ -1,5 +1,5 @@
 import { Link, Form, useActionData } from "react-router-dom";
-import { ErrorMessage } from "../components";
+import { ErrorMessage, ProductForm } from "../components";
 
 export default function NewProduct() {
 
@@ -22,30 +22,7 @@ export default function NewProduct() {
       {error && (<ErrorMessage>{error}</ErrorMessage>)}
 
       <Form className="mt-10" method="POST">
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="name">
-            Product Name:
-          </label>
-          <input
-            id="name"
-            type="text"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Example: Mouse Logitech Master Series MX"
-            name="name"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="price">
-            Price:
-          </label>
-          <input
-            id="price"
-            type="number"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Example: 200, 300"
-            name="price"
-          />
-        </div>
+        <ProductForm/>
         <input
           type="submit"
           className="p-2 bg-blue-700 text-sm uppercase cursor-pointer text-white font-bold rounded-md hover:bg-blue-800 transition-colors"

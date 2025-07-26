@@ -1,5 +1,5 @@
 import { Link, Form, useActionData, useLoaderData } from "react-router-dom";
-import { ErrorMessage } from "../components";
+import { ErrorMessage, ProductForm } from "../components";
 import type { ProductType } from "../types";
 
 export default function EditProduct() {
@@ -25,32 +25,7 @@ export default function EditProduct() {
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
       <Form className="mt-10" method="PUT">
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="name">
-            Product Name:
-          </label>
-          <input
-            id="name"
-            type="text"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Example: Mouse Logitech Master Series MX"
-            name="name"
-            defaultValue={product.name}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="price">
-            Price:
-          </label>
-          <input
-            id="price"
-            type="number"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Example: 200, 300"
-            name="price"
-            defaultValue={product.price}
-          />
-        </div>
+        <ProductForm product={product} />
         <div className="mb-4">
           <label className="text-gray-800" htmlFor="availability">
             Disponibilidad:
