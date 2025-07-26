@@ -13,3 +13,10 @@ export function parseFormData<T extends Record<string, unknown>>(formData: FormD
   const entries = Object.fromEntries(formData.entries());
   return entries as Partial<T>;
 }
+
+export function formatCurrency( amount: number) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  }).format(amount)
+}
