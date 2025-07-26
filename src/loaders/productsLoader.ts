@@ -1,6 +1,6 @@
 import { getProducts } from "../services";
 
 export const loader = async () => {
-  const response = await getProducts();
-  console.log(response);
+  const products = await getProducts();
+  return products
 };
