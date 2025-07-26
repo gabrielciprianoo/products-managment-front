@@ -37,6 +37,7 @@ export const getProducts = async () => {
     console.log(error);
   }
 };
+
 export const getProductByID = async ( id : ProductType['id']) => {
   try {
     const url = `${import.meta.env.VITE_API_URL}/${id}`;
@@ -55,3 +56,20 @@ export const getProductByID = async ( id : ProductType['id']) => {
   }
 };
 
+export const updateProduct = async (data : DrafProductType, id : ProductType['id']) => { 
+    try {
+        const result = safeParse(DraftProductSchema, data);
+
+        if(!result.success){
+            console.log(result.issues)
+            return
+        }
+
+        const url = `${import.meta.env.VITE_API_URL}/${id}`;
+        const response = await axios.put(url, result.output)
+        return response.data
+
+    } catch (error) {
+        console.log(error)
+    }
+}
