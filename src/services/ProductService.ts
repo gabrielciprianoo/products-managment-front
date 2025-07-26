@@ -31,7 +31,7 @@ export const getProducts = async () => {
         throw new Error("Data validation failed");
     }
 
-    return data;
+    return result.output;
 
   } catch (error) {
     console.log(error);
