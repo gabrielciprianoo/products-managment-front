@@ -4,18 +4,7 @@ import type { DrafProductType, ProductType } from "../types";
 import { addProduct, updateProduct } from "../services";
 import { notify } from "../utils/notify";
 
-export async function action({ request, params}: ActionFunctionArgs) {
-  switch (request.method) {
-    case "POST":
-      return await addProductAction(request);
-    case "PUT":
-      return await updateProductAction(request, params);
-    default:
-      break;
-  }
-}
-
-const addProductAction = async (request: Request) => {
+export const addProductAction = async ({ request}: ActionFunctionArgs) => {
   const formData = await request.formData();
   const rawData = parseFormData<ProductType>(formData);
 
@@ -33,9 +22,7 @@ const addProductAction = async (request: Request) => {
   return error;
 };
 
-const updateProductAction = async (
-  request: Request,
-   params : ActionFunctionArgs['params']
+export const updateProductAction = async ({ request, params}: ActionFunctionArgs
 ) => {
   const formData = await request.formData();
   const rawData = parseFormData<DrafProductType>(formData);
