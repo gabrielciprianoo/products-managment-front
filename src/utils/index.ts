@@ -1,6 +1,6 @@
-import type { ProductType } from "../types";
+import type { DrafProductType } from "../types";
 
-export const validateProductForm = (data: ProductType) => {
+export const validateProductForm = (data: DrafProductType) => {
   let error = "";
   if (!data.name?.trim() || isNaN(data.price)) {
     error = "All fields are required and must have valid values.";

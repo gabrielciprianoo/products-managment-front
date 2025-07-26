@@ -1,6 +1,6 @@
 import { redirect, type ActionFunctionArgs } from "react-router-dom";
 import { parseFormData, validateProductForm } from "../utils";
-import type { ProductType } from "../types";
+import type { DrafProductType, ProductType } from "../types";
 import { addProduct } from "../services";
 import { notify } from "../utils/notify";
 
@@ -19,7 +19,7 @@ const addProductAction = async (request: Request) => {
   const formData = await request.formData();
   const rawData = parseFormData<ProductType>(formData);
 
-  const data: ProductType = {
+  const data: DrafProductType = {
     name: rawData.name ?? '',
     price: parseFloat(String(rawData.price ?? '0')),
   };
