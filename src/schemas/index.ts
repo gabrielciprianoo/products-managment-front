@@ -6,6 +6,7 @@ export const DraftProductSchema = object({
 });
 
 export const ProductSchema = object({
+  id: number(),
   name: string(),
   price: number(),
   availability: boolean(),
