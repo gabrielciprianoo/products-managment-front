@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
-import { ProductDetail } from "../components";
 import type { ProductType } from "../types";
+import { ProductsTable } from "../components";
 
 export default function Products() {
   const products = useLoaderData() as ProductType[];
@@ -20,21 +20,13 @@ export default function Products() {
       </div>
 
       <div className="p-2">
-        <table className="w-full mt-5 table-auto">
-          <thead className="bg-slate-800 text-white">
-            <tr>
-              <th className="p-2">Product</th>
-              <th className="p-2">Price</th>
-              <th className="p-2">Availability</th>
-              <th className="p-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map( product => (
-              <ProductDetail product={product} key={product.id}/>
-            ))}
-          </tbody>
-        </table>
+        {products.length > 0 ? (
+          <ProductsTable products={products} />
+        ) : (
+          <div className="flex justify-center py-4">
+            <p className="text-gray-400">Products List is empty, please add your fisrt product</p>
+          </div>
+        )}
       </div>
     </>
   );
