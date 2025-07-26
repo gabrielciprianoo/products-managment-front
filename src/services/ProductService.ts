@@ -1,6 +1,6 @@
 import { safeParse } from "valibot"
 import type { DrafProductType } from "../types"
-import { DraftProductSchema } from "../schemas"
+import { DraftProductSchema, GetProductsResponse } from "../schemas"
 import axios from "axios";
 
 export const addProduct = async (data : DrafProductType) => { 
@@ -19,3 +19,21 @@ export const addProduct = async (data : DrafProductType) => {
         console.log(error)
     }
 }
+
+export const getProducts = async () => {
+  try {
+    const url = import.meta.env.VITE_API_URL;
+    const { data } = await axios(url);
+    const result = safeParse(GetProductsResponse, data)
+
+    if(!result.success){
+        console.error("Validation issues:", result.issues);
+        throw new Error("Data validation failed");
+    }
+
+    return data;
+
+  } catch (error) {
+    console.log(error);
+  }
+};
