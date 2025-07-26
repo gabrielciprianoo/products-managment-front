@@ -1,10 +1,5 @@
 import type { InferOutput } from "valibot"
-import type { DraftProductSchema } from "../schemas"
-
-export type ProductType = { 
-    name: string,
-    price: number,
-    availability?: boolean
-}
+import type { DraftProductSchema, ProductSchema } from "../schemas"
 
 export type DrafProductType = InferOutput<typeof DraftProductSchema> 
+export type ProductType = InferOutput<typeof ProductSchema>
