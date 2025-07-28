@@ -1,7 +1,7 @@
 import { redirect, type ActionFunctionArgs } from "react-router-dom";
 import { parseFormData, validateProductForm } from "../utils";
 import type { DrafProductType, ProductType } from "../types";
-import { addProduct, deleteProduct, updateProduct } from "../services";
+import { addProduct, deleteProduct, updateProduct, updateProductAvailability } from "../services";
 import { notify } from "../utils/notify";
 
 export const addProductAction = async ({ request }: ActionFunctionArgs) => {
@@ -54,3 +54,16 @@ export const deleteProductAction = async ({ params }: ActionFunctionArgs) => {
   notify("success", "Product Deleted Successfully");
   return redirect("/");
 };
+
+export const updateAvailability = async ( { request } : ActionFunctionArgs) =>{
+  const data = Object.fromEntries(await request.formData())
+  const id = data.id;
+  if (!id) return redirect("/");
+  const result = await updateProductAvailability(Number(id));
+  if (!result) {
+    notify("error", "Error ocurred");
+  }
+  notify("success", "Product Updated Successfully");
+  return result;
+  
+}
